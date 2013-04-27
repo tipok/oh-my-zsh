@@ -38,12 +38,3 @@ if [[ -f "$wrapsource" ]]; then
 else
   print "zsh virtualenvwrapper plugin: Cannot find virtualenvwrapper_lazy.sh. Please install with \`pip install virtualenvwrapper\`."
 fi
-
-activate() {
-  if [[ -f ./$1/bin/activate  ]]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT='1'
-    source ./$1/bin/activate
-  else
-    echo "no ./$1/bin/activate found"
-  fi
-}
