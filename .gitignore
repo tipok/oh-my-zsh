@@ -1,10 +1,10 @@
-locals.zsh
-log/.zsh_history
+# custom files
+custom/
 projects.zsh
-custom
 !custom/plugins/example
 !custom/example.zsh
 *.swp
 !custom/example.zshcache
 cache/
 .DS_Store
+log/

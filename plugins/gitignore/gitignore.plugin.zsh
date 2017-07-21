@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
+function gi() { curl -sL https://www.gitignore.io/api/${(j:,:)@} }
 
 _gitignoreio_get_command_list() {
   curl -sL https://www.gitignore.io/api/list | tr "," "\n"
@@ -11,6 +10,3 @@ _gitignoreio () {
 }
 
 compdef _gitignoreio gi
-=======
-function gi() { curl http://gitignore.io/api/$@ ;}
->>>>>>> 083a7e4b081a9a5f93685ec6b19edb6282d6454b
