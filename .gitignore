@@ -1,10 +1,6 @@
 # custom files
 custom/
-projects.zsh
-!custom/plugins/example
-!custom/example.zsh
-*.swp
-!custom/example.zshcache
+
+# temp files directories
 cache/
-.DS_Store
 log/
