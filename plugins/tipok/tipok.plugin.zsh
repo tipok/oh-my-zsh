@@ -28,3 +28,14 @@ function doom-update () {
     bin/doom update
     cd $p
 }
+
+function zsh-update () {
+    local p=$(pwd)
+
+    cd ~/.oh-my-zsh
+    git pull --ff-only
+    cd ~/.zsh/pure
+    git pull --ff-only
+    source ~/.zshrc
+    cd $p
+}
