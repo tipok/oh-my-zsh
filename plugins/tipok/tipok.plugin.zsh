@@ -15,3 +15,16 @@ function mov2gif () {
     local output_file=${2:-'out.gif'}
     ffmpeg -i $mov_file -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $output_file
 }
+
+function doom-sync () {
+    ~/.emacs.d/bin/doom sync
+}
+
+function doom-update () {
+    local p=$(pwd)
+    cd ~/.emacs.d
+    git pull --ff-only
+    doom-sync
+    bin/doom update
+    cd $p
+}
