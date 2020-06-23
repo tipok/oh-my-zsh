@@ -1,9 +1,9 @@
 #!/bin/sh
 #
 # This script should be run via curl:
-#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/tipok/oh-my-zsh/master/tools/install.sh)"
 # or wget:
-#   sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#   sh -c "$(wget -qO- https://raw.githubusercontent.com/tipok/oh-my-zsh/master/tools/install.sh)"
 #
 # As an alternative, you can first download the install script and run it afterwards:
 #   wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -35,9 +35,12 @@ set -e
 
 # Default settings
 ZSH=${ZSH:-~/.oh-my-zsh}
-REPO=${REPO:-ohmyzsh/ohmyzsh}
+REPO=${REPO:-tipok/oh-my-zsh}
 REMOTE=${REMOTE:-https://github.com/${REPO}.git}
 BRANCH=${BRANCH:-master}
+PURE=${PURE:-/.zsh/pure}
+PURE_REMOTE=${PURE_REMOTE:-https://github.com/sindresorhus/pure.git}
+PURE_BRANCH=${PURE_BRANCH:-master}
 
 # Other options
 CHSH=${CHSH:-yes}
@@ -99,6 +102,17 @@ setup_ohmyzsh() {
 		-c receive.fsck.zeroPaddedFilemode=ignore \
 		--depth=1 --branch "$BRANCH" "$REMOTE" "$ZSH" || {
 		error "git clone of oh-my-zsh repo failed"
+		exit 1
+	}
+
+	mkdir -p ~/.zsh
+
+	git clone -c core.eol=lf -c core.autocrlf=false \
+		-c fsck.zeroPaddedFilemode=ignore \
+		-c fetch.fsck.zeroPaddedFilemode=ignore \
+		-c receive.fsck.zeroPaddedFilemode=ignore \
+		--depth=1 --branch "$PURE_BRANCH" "$PURE_REMOTE" "$PURE" || {
+		error "git clone of pure repo failed"
 		exit 1
 	}
 
