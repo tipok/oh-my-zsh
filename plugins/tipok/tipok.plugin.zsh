@@ -25,7 +25,7 @@ function doom-update () {
     cd ~/.emacs.d
     git pull --ff-only
     doom-sync
-    bin/doom update
+    ~/.emacs.d/bin/doom sync -u
     cd $p
 }
 
